@@ -1,3 +1,7 @@
+./venv/
+.idea
+
+./backend/examples/
 # Logs
 logs
 *.log
