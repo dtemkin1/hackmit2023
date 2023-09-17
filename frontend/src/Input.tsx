@@ -22,13 +22,12 @@ function Input({ returnData }: { returnData: (data: string) => void }) {
       formData.append('file', file);
 
       try {
-        // You can write the URL of your server or any other endpoint used for file upload
         const result = await fetch(
           'https://homework-helper-2afa13de2a71.herokuapp.com/',
           {
-            method: 'GET',
+            method: 'POST',
             mode: 'no-cors',
-            // body: formData,
+            body: formData,
           }
         );
         console.log('Request received!');
