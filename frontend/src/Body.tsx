@@ -1,9 +1,24 @@
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Input from './Input';
+import Output from './Output';
+
 function Body() {
-    return (
-        <div className="Body">
-        <h1>Body</h1>
-        </div>
-    )
+  return (
+    <main>
+      <Container className="my-3">
+        <Row>
+          <Col>
+            <Input />
+          </Col>
+          <Col>
+            <Output />
+          </Col>
+        </Row>
+      </Container>
+    </main>
+  );
 }
 
-export default Body
+export default Body;

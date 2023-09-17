@@ -4,6 +4,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+// import Dropdown from 'react-bootstrap/Dropdown';
+// import DropdownButton from 'react-bootstrap/DropdownButton';
 
 function HelpModal(props) {
   return (
@@ -17,7 +19,22 @@ function HelpModal(props) {
         <Modal.Title id="contained-modal-title-vcenter">Help :3</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p>Help text goes here.</p>
+        <ol>
+          <li>
+            Upload a photo of your homework problem (by taking a photo or from
+            your computer)
+          </li>
+          <li>
+            Select language (English, French, German, Portuguese, Spanish)
+          </li>
+          <li>
+            Hit generate output to start our magic Homework Helper machine
+          </li>
+          <li>
+            ¡Voila! Out comes a pdf with the step-by-step solutions and a video
+            explanation
+          </li>
+        </ol>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
@@ -40,9 +57,14 @@ function Header() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto"></Nav>
-              <Button type="button" onClick={setShowHelp}>
+              <Button type="button" onClick={() => setShowHelp(true)}>
                 Help
               </Button>
+              {/* <DropdownButton id="bd-theme" title="Theme">
+                <Dropdown.Item data-bs-theme-value="light">Light</Dropdown.Item>
+                <Dropdown.Item data-bs-theme-value="dark">Dark</Dropdown.Item>
+                <Dropdown.Item data-bs-theme-value="auto">Auto</Dropdown.Item>
+              </DropdownButton> */}
             </Navbar.Collapse>
           </Container>
         </Navbar>
