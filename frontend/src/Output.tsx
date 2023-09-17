@@ -3,23 +3,15 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
-function Output() {
+function Output({ output }: { output: string }) {
   return (
     <>
       <Card className="mh-100">
         <Card.Header className="text-center">Output</Card.Header>
         <Row>
           <Col>
-            <Button>Generate Solutions</Button>
+            <p>{output}</p>
           </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Button>Download PDF</Button>
-          </Col>
-        </Row>
-        <Row>
-          <Col>File Viewer</Col>
         </Row>
       </Card>
     </>
