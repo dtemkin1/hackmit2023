@@ -4,11 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 
-function Input({
-  returnData,
-}: {
-  returnData: React.Dispatch<React.SetStateAction<string>>;
-}) {
+function Input({ returnData }: { returnData: (data: string) => void }) {
   const [file, setFile] = useState<File | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,11 +42,11 @@ function Input({
       <Card className="mh-100">
         <Card.Header className="text-center">Input</Card.Header>
         <Row>
-          <Col>
+          <Col className="text-center">
             <input type="file" onChange={handleFileChange} />
             {/* <Button>Use Camera</Button> */}
           </Col>
-          <Col>
+          <Col className="text-center">
             <Button disabled={file ? false : true} onClick={handleUpload}>
               Upload
             </Button>
