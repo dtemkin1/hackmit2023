@@ -2,6 +2,7 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 
 function Input({ returnData }: { returnData: (data: string) => void }) {
@@ -41,24 +42,48 @@ function Input({ returnData }: { returnData: (data: string) => void }) {
     <>
       <Card className="mh-100">
         <Card.Header className="text-center">Input</Card.Header>
-        <Row>
-          <Col className="text-center">
-            <input type="file" onChange={handleFileChange} />
-            {/* <Button>Use Camera</Button> */}
-          </Col>
-          <Col className="text-center">
-            <Button disabled={file ? false : true} onClick={handleUpload}>
-              Upload
-            </Button>
-          </Col>
-        </Row>
-        <Row>
-          <Col>Language</Col>
-          <Col>Grade</Col>
-        </Row>
-        <Row>
-          <Col>{}</Col>
-        </Row>
+        <Form noValidate onSubmit={handleUpload}>
+          <Row className="p-3">
+            <Form.Group as={Col} className="text-center">
+              <Form.Label>Language</Form.Label>
+              <Form.Select aria-label="Select language">
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <option value="zh">Chinese</option>
+                <option value="ar">Arabic</option>
+                <option value="es">French</option>
+                <option value="ru">Russian</option>
+              </Form.Select>
+            </Form.Group>
+            <Form.Group as={Col} className="text-center">
+              <Form.Label>Grade (1-12)</Form.Label>
+              <Form.Control aria-label="Select grade"></Form.Control>
+            </Form.Group>
+          </Row>
+          <Row className="p-3">
+            <Form.Group
+              as={Col}
+              controlId="formFile"
+              className="text-center mb-3"
+            >
+              <Form.Label>Upload a PDF file</Form.Label>
+              <Form.Control type="file" onChange={handleFileChange} />
+            </Form.Group>
+            <Col className="text-center">
+              <Button
+                className="max-width"
+                disabled={file ? false : true}
+                type="submit"
+              >
+                <p>Ready to submit?</p>
+                Click here!
+              </Button>
+            </Col>
+          </Row>
+          <Row>
+            <Col>{}</Col>
+          </Row>
+        </Form>
       </Card>
     </>
   );
