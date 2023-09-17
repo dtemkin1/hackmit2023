@@ -26,15 +26,15 @@ function Input({ returnData }: { returnData: (data: string) => void }) {
         const result = await fetch(
           'https://homework-helper-2afa13de2a71.herokuapp.com/',
           {
-            method: 'POST',
+            method: 'GET',
             mode: 'no-cors',
-            body: formData,
+            // body: formData,
           }
         );
         console.log('Request received!');
 
+        console.log(result);
         const data = await result.json();
-        console.log(data);
 
         returnData(data);
       } catch (error) {
