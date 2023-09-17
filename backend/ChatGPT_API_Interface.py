@@ -1,6 +1,5 @@
 import os
 import openai
-from pylatex import Document
 
 
 
