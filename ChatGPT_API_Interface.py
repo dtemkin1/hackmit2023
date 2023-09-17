@@ -2,8 +2,7 @@ import os
 import openai
 
 
-
-openai.api_key = "{apikey}"
+openai.api_key = "api-key"
 
 
 def HomeworkHelpGenerator(assignmentBody,Language = "English",Level = 5):
@@ -18,8 +17,9 @@ def HomeworkHelpGenerator(assignmentBody,Language = "English",Level = 5):
     {"role": "user", "content": f"Code a LaTeX document in {Language} with a step-by-step guide for someone in grade {Level}. The document should explain how to solve the following worksheet:{assignmentBody}. Clearly indicate where the LaTeX starts and ends with the words START and END."},
     ]
     )
+    print(completion.choices[0].message["content"])
+
     if "START" not in completion.choices[0].message["content"] or "END" not in completion.choices[0].message["content"]:
         raise Exception("ChatGPT did not return a valid document. Please try again.")
     pdfBody = completion.choices[0].message["content"].split("START")[1].split("END")[0]
     return pdfBody
-
