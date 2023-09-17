@@ -9,7 +9,7 @@ function Output({ output }: { output: string }) {
         <Card.Header className="text-center">Output</Card.Header>
         <Row>
           <Col>
-            <p>{output}</p>
+            <p className="mw-100">{output}</p>
           </Col>
         </Row>
       </Card>
