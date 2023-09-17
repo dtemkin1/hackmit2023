@@ -4,6 +4,9 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
+import { pdfjs, Document } from 'react-pdf';
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 function Input({ returnData }: { returnData: (data: string) => void }) {
   const [file, setFile] = useState<File | null>(null);
@@ -42,7 +45,7 @@ function Input({ returnData }: { returnData: (data: string) => void }) {
     <>
       <Card className="mh-100">
         <Card.Header className="text-center">Input</Card.Header>
-        <Form noValidate onSubmit={handleUpload}>
+        <Form noValidate>
           <Row className="p-3">
             <Form.Group as={Col} className="text-center">
               <Form.Label>Language</Form.Label>
@@ -73,7 +76,7 @@ function Input({ returnData }: { returnData: (data: string) => void }) {
               <Button
                 className="max-width"
                 disabled={file ? false : true}
-                type="submit"
+                onClick={handleUpload}
               >
                 <p>Ready to submit?</p>
                 Click here!
@@ -81,7 +84,7 @@ function Input({ returnData }: { returnData: (data: string) => void }) {
             </Col>
           </Row>
           <Row>
-            <Col>{}</Col>
+            <Col>{file && <Document file={file} />}</Col>
           </Row>
         </Form>
       </Card>
