@@ -26,10 +26,13 @@ function Input({ returnData }: { returnData: (data: string) => void }) {
 
       try {
         // You can write the URL of your server or any other endpoint used for file upload
-        const result = await fetch('PUT LINK HERE', {
-          method: 'POST',
-          body: formData,
-        });
+        const result = await fetch(
+          'https://homework-helper-2afa13de2a71.herokuapp.com/run_gpt',
+          {
+            method: 'POST',
+            body: formData,
+          }
+        );
 
         const data = await result.json();
 
@@ -69,7 +72,7 @@ function Input({ returnData }: { returnData: (data: string) => void }) {
               controlId="formFile"
               className="text-center mb-3"
             >
-              <Form.Label>Upload a PDF file</Form.Label>
+              <Form.Label>Upload an image file (.png)</Form.Label>
               <Form.Control type="file" onChange={handleFileChange} />
             </Form.Group>
             <Col className="text-center">
@@ -84,7 +87,11 @@ function Input({ returnData }: { returnData: (data: string) => void }) {
             </Col>
           </Row>
           <Row>
-            <Col>{file && <Document file={file} />}</Col>
+            <Col>
+              {file && (
+                <img className="mw-100" src={URL.createObjectURL(file)} />
+              )}
+            </Col>
           </Row>
         </Form>
       </Card>
