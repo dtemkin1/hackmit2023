@@ -5,8 +5,6 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
-
 function Input({ returnData }: { returnData: (data: string) => void }) {
   const [file, setFile] = useState<File | null>(null);
 
