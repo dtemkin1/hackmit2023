@@ -17,7 +17,7 @@ function Body() {
       <Container className="my-3">
         <Row>
           <Col>
-            <Input returnData={setOutput} />
+            <Input returnData={handleOutput} />
           </Col>
           <Col>
             <Output output={output} />
