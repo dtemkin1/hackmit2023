@@ -4,8 +4,6 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-// import Dropdown from 'react-bootstrap/Dropdown';
-// import DropdownButton from 'react-bootstrap/DropdownButton';
 
 function HelpModal(props) {
   return (
@@ -16,7 +14,7 @@ function HelpModal(props) {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">Help :3</Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">Help</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <ol>
@@ -60,11 +58,6 @@ function Header() {
               <Button type="button" onClick={() => setShowHelp(true)}>
                 Help
               </Button>
-              {/* <DropdownButton id="bd-theme" title="Theme">
-                <Dropdown.Item data-bs-theme-value="light">Light</Dropdown.Item>
-                <Dropdown.Item data-bs-theme-value="dark">Dark</Dropdown.Item>
-                <Dropdown.Item data-bs-theme-value="auto">Auto</Dropdown.Item>
-              </DropdownButton> */}
             </Navbar.Collapse>
           </Container>
         </Navbar>
