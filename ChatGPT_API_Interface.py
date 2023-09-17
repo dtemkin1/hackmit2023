@@ -4,7 +4,7 @@ from pylatex import Document
 
 
 
-openai.api_key = "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"
+openai.api_key = "{apikey}"
 
 decodedString = testString.decode("utf-8")
 
