@@ -20,18 +20,19 @@ function HelpModal({ show, onHide }: { show: boolean; onHide: () => void }) {
       <Modal.Body>
         <ol>
           <li>
-            Upload a photo of your homework problem (by taking a photo or from
-            your computer)
+            Select the solution language (English, French, German, Portuguese, Spanish)
           </li>
           <li>
-            Select language (English, French, German, Portuguese, Spanish)
+            Select the grade, or educational level, for the education level
           </li>
           <li>
-            Hit generate output to start our magic Homework Helper machine
+            Upload a photo of your homework problem (using your device camera or uploading from your computer)
           </li>
           <li>
-            ¡Voila! Out comes a pdf with the step-by-step solutions and a video
-            explanation
+            Hit "Generate Solution" to start our magic Homework Helper machine
+          </li>
+          <li>
+            ¡Voila! Out comes a pdf with the step-by-step solutions and a video explanation
           </li>
         </ol>
       </Modal.Body>

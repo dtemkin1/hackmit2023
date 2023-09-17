@@ -5,7 +5,6 @@ import openai
 
 openai.api_key = "{apikey}"
 
-decodedString = testString.decode("utf-8")
 
 def HomeworkHelpGenerator(assignmentBody,Language = "English",Level = 5):
     """
