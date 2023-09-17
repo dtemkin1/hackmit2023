@@ -1,13 +1,22 @@
-import ocr
-# import mlstuff # to change to new name
-import ChatGPT_API_Interface
-import sys
-
+# Importing flask module in the project is mandatory
+# An object of Flask class is our WSGI application.
+from flask import Flask
+ 
+# Flask constructor takes the name of
+# current module (__name__) as argument.
+app = Flask(__name__)
+ 
+# The route() function of the Flask class is a decorator,
+# which tells the application which URL should call
+# the associated function.
+@app.route('/')
+# ‘/’ URL is bound with hello_world() function.
+def hello_world():
+    return 'Diego Temkin is a'
+ 
+# main driver function
 if __name__ == '__main__':
-    file_path = sys.argv[1]
-
-    # converting file to text
-    text = ocr.to_text(file_path)
-    text = ocr.prepare_input(text)
-    outputString = ChatGPT_API_Interface.HomeworkHelpGenerator(text)
-    print(outputString)
+ 
+    # run() method of Flask class runs the application
+    # on the local development server.
+    app.run()
