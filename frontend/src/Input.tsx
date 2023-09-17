@@ -27,13 +27,15 @@ function Input({ returnData }: { returnData: (data: string) => void }) {
           'https://homework-helper-2afa13de2a71.herokuapp.com/run_gpt',
           {
             method: 'POST',
+            mode: 'no-cors',
             body: formData,
           }
         );
+        console.log('Request received!');
 
         const data = await result.json();
-
         console.log(data);
+
         returnData(data);
       } catch (error) {
         console.error(error);
