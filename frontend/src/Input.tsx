@@ -2,50 +2,42 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import axios from 'axios';
 import { useState } from 'react';
 
-function Input() {
-  let [selectedFile, setSelectedFile] = useState(null);
+function Input({
+  returnData,
+}: {
+  returnData: React.Dispatch<React.SetStateAction<string>>;
+}) {
+  const [file, setFile] = useState<File | null>(null);
 
-  let onFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setFile(e.target.files[0]);
+    }
   };
 
-  let onFileUpload = () => {
-    // Create an object of formData
-    const formData = new FormData();
+  const handleUpload = async () => {
+    if (file) {
+      console.log('Uploading file...');
 
-    // Update the formData object
-    formData.append('myFile', selectedFile, selectedFile.name);
+      const formData = new FormData();
+      formData.append('file', file);
 
-    // Details of the uploaded file
-    console.log(selectedFile);
+      try {
+        // You can write the URL of your server or any other endpoint used for file upload
+        const result = await fetch('PUT LINK HERE', {
+          method: 'POST',
+          body: formData,
+        });
 
-    // Request made to the backend api
-    // Send formData object
-    axios.post('api/uploadfile', formData);
-  };
+        const data = await result.json();
 
-  let fileData = () => {
-    if (selectedFile) {
-      return (
-        <div>
-          <h2>File Details:</h2>
-          <p>File Name: {selectedFile.name}</p>
-
-          <p>File Type: {selectedFile.type}</p>
-
-          <p>Last Modified: {selectedFile.lastModifiedDate.toDateString()}</p>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <br />
-          <h4>Choose before Pressing the Upload button</h4>
-        </div>
-      );
+        console.log(data);
+        returnData(data);
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
@@ -55,11 +47,13 @@ function Input() {
         <Card.Header className="text-center">Input</Card.Header>
         <Row>
           <Col>
-            <input type="file" onChange={onFileChange} />
+            <input type="file" onChange={handleFileChange} />
             {/* <Button>Use Camera</Button> */}
           </Col>
           <Col>
-            <Button onClick={onFileUpload}>Upload</Button>
+            <Button disabled={file ? false : true} onClick={handleUpload}>
+              Upload
+            </Button>
           </Col>
         </Row>
         <Row>
@@ -67,7 +61,7 @@ function Input() {
           <Col>Grade</Col>
         </Row>
         <Row>
-          <Col>File Viewer</Col>
+          <Col>{}</Col>
         </Row>
       </Card>
     </>
