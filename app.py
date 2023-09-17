@@ -10,9 +10,6 @@ app = Flask(__name__)
 # which tells the application which URL should call
 # the associated function.
 @app.route('/')
-# ‘/’ URL is bound with hello_world() function.
-def hello_world():
-    return 'Diego Temkin is a'
  
 # main driver function
 if __name__ == '__main__':
