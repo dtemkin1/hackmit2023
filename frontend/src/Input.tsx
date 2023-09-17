@@ -61,7 +61,7 @@ function Input({ returnData }: { returnData: (data: string) => void }) {
             </Form.Group>
             <Form.Group as={Col} className="text-center">
               <Form.Label>Grade (1-12)</Form.Label>
-              <Form.Control aria-label="Select grade"></Form.Control>
+              <Form.Control type="number" min="1" max="12" aria-label="Select grade"></Form.Control>
             </Form.Group>
           </Row>
           <Row className="p-3">
