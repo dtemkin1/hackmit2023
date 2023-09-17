@@ -1,2 +1,0 @@
-flask>=2.3.2
-flask_vite>=0.3.0
